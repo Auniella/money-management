@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #ADBDFF;
+}
+
+* {
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+h4 {
+    display: inline-block;
+    font-size: 1.8rem;
+    margin: 0rem auto 0.5rem auto;
+}
+
+p {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.container {
+    margin: 3rem auto;
+    width: 85%;
+    max-width: 70rem;
+    padding: 2rem;
+    border-radius: 0.7rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.ordre {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    position: relative;
+}
+
+summary::marker {
+    font-size: 1.6rem;
+}
+
+.income,
+.expense {
+    width: 35%;
+}
+
+.ligne-verticale {
+    position: absolute;
+    left: 50%;
+    height: 90%;
+    border: 0.1rem solid #808080;
+}
+
+ol {
+    margin: 0;
+}
+
+li::marker {
+    content: counters(list-item, '') '.   ';
+    color: #D64148;
+    font-weight: 700;
+    font-size: 1.7rem;
+    margin: 2rem;
+}
+
+li {
+    font-size: 1.7rem;
+}
+
+span {
+    margin-left: 0.9rem;
+    color: #020887;
+    text-decoration: underline;
+    font-size: 1.7rem;
+}
+
+button {
+    padding: 0.6rem 1.4rem;
+    margin: 1.5rem 0;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.5s;
+    color: #fff;
+    background-color: #334195;
+}
+
+button:hover {
+    background-color: #020887;
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+#top {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    right: 0.8rem;
+    bottom: 1.5rem;
+}
+
+@media screen and (max-width: 700px) {
+    body {
+        display: block;
+        height: fit-content;
+    }
+
+    .container {
+        margin: 2rem auto;
+    }
+
+    .ordre {
+        display: block;
+    }
+
+    .income,
+    .expense {
+        width: 100%;
+    }
+
+    .ligne-verticale {
+        position: relative;
+        width: 90%;
+        left: 0;
+        height: 0;
+        border: 0.1rem solid #808080;
+    }
+
+    #top {
+        position: fixed;
+        z-index: 1;
+        right: 0.5rem;
+        bottom: 0.5rem;
+    }
+}
