@@ -83,7 +83,12 @@ li {
     font-size: 1.7rem;
 }
 
-span {
+span.dates {
+    font-size: 1.4rem;
+    font-style: italic;
+}
+
+#totalexpenses {
     margin-left: 0.9rem;
     color: #020887;
     text-decoration: underline;

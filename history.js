@@ -16,29 +16,69 @@ function getHistory() {
     console.log("2", parsedInfo);
 
     //Vérifier l'existence le la propriété dans l'objet
-    if ("incomes" in parsedInfo) {
-      console.log("3", parsedInfo.incomes);
+    if ("incomes" in parsedInfo && "incDates" in parsedInfo) {
+      console.log("3", parsedInfo.incomes, parsedInfo.incDates);
 
-      parsedInfo.incomes.forEach(function (income) {
+      if (parsedInfo.incomes.length !== parsedInfo.incDates.length) {
+        console.error("incomes: les tableaux n'ont pas la même longueur.");
+      } else {
+        for (let i = 0; i < parsedInfo.incomes.length; i++) {
+          let incLi = document.createElement("li");
+          let spInc = document.createElement("span");
+          spInc.textContent = parsedInfo.incomes[i];
+
+          let spIncDate = document.createElement("span");
+          spIncDate.textContent = parsedInfo.incDates[i];
+          spIncDate.classList.add("dates");
+
+          incLi.appendChild(spInc);
+          incLi.appendChild(document.createTextNode(" - "));
+          incLi.appendChild(spIncDate);
+
+          console.log("4", incLi.textContent);
+          incomeslist.appendChild(incLi);
+        }
+      }
+
+      /* parsedInfo.incomes.forEach(function (income) {
         let incLi = document.createElement("li");
         incLi.textContent = income;
         console.log("4", incLi.textContent);
         incomeslist.appendChild(incLi);
-      });
+      }); */
     }
 
     if ("totalIncome" in parsedInfo) {
       totalincomes.textContent = parsedInfo.totalIncome;
     }
-    if ("expenses" in parsedInfo) {
-      console.log("3", parsedInfo.expenses);
+    if ("expenses" in parsedInfo && "expDates" in parsedInfo) {
+      console.log("3", parsedInfo.expenses, parsedInfo.expDates);
 
-      parsedInfo.expenses.forEach(function (expense) {
+      if (parsedInfo.expenses.length !== parsedInfo.expDates.length) {
+        console.error("expenses: les tableaux n'ont pas la même longueur.");
+      } else {
+        for (let i = 0; i < parsedInfo.expenses.length; i++) {
+          let expLi = document.createElement("li");
+          let spExp = document.createElement("span");
+          spExp.textContent = parsedInfo.expenses[i];
+
+          let spExpDate = document.createElement("span");
+          spExpDate.textContent = parsedInfo.expDates[i];
+          spExpDate.classList.add("dates");
+          expLi.appendChild(spExp);
+          expLi.appendChild(document.createTextNode(" - "));
+          expLi.appendChild(spExpDate);
+          console.log("4", expLi.textContent);
+          expensesList.appendChild(expLi);
+        }
+      }
+
+      /* parsedInfo.expenses.forEach(function (expense) {
         let expLi = document.createElement("li");
         expLi.textContent = expense;
         console.log("4", expLi.textContent);
         expensesList.appendChild(expLi);
-      });
+      }); */
     }
     if ("totalExpense" in parsedInfo) {
       totalexpenses.textContent = parsedInfo.totalExpense;

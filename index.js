@@ -19,6 +19,8 @@ const btnAddIncome = document.getElementById("btnAddIncome");
 const btnAddExpense = document.getElementById("btnAddExpense");
 
 let personAccount = {
+  incDates: [],
+  expDates: [],
   incomes: [],
   expenses: [],
   totalIncome: 0,
@@ -58,7 +60,18 @@ function addIncome() {
     console.log("Revenu ajouté :", personAccount.incomes);
     console.log("Revenu total :", personAccount.totalIncome);
     inputIncome.value = "";
+    let date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth();
+    let formatMonth = month.toString().padStart(2, "0");
+    let year = date.getFullYear();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let incTime = `${day}/${formatMonth}/${year} ${hour}:${minute}`;
+    console.log(incTime);
+    personAccount.incDates.push(incTime);
     addToStorage();
+    console.table(personAccount);
   } else {
     let err = document.createElement("p");
     err.textContent = "Please enter a correct income.";
@@ -81,7 +94,18 @@ function addExpense() {
     console.log("Dépense ajoutée :", personAccount.expenses);
     console.log("Dépenses totales :", personAccount.totalExpense);
     inputExpense.value = "";
+    let date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth();
+    let formatMonth = month.toString().padStart(2, "0");
+    let year = date.getFullYear();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let expTime = `${day}/${formatMonth}/${year} ${hour}:${minute}`;
+    console.log(expTime);
+    personAccount.expDates.push(expTime);
     addToStorage();
+    console.table(personAccount);
   } else {
     let err = document.createElement("p");
     err.textContent = "Please enter a correct expense.";
@@ -133,6 +157,15 @@ function verifIds() {
       greet.textContent = `Welcome, ${parsedInfo.firstName} ${parsedInfo.lastName} !`;
       ids.style.display = "none";
       connect.style.display = "block";
+      personAccount.firstName = parsedInfo.firstName;
+      personAccount.lastName = parsedInfo.lastName;
+      personAccount.incomes = parsedInfo.incomes || [];
+      personAccount.expenses = parsedInfo.expenses || [];
+      personAccount.totalIncome = parsedInfo.totalIncome || 0;
+      personAccount.totalExpense = parsedInfo.totalExpense || 0;
+      personAccount.accountBalance = parsedInfo.accountBalance || 0;
+      // Mettre à jour l'affichage des totaux et du solde
+      calcBalance();
     }
     if ("accountBalance" in parsedInfo) {
       spBalance.textContent = Number(parsedInfo.accountBalance).toLocaleString(
