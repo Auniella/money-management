@@ -157,6 +157,8 @@ function verifIds() {
       greet.textContent = `Welcome, ${parsedInfo.firstName} ${parsedInfo.lastName} !`;
       ids.style.display = "none";
       connect.style.display = "block";
+      personAccount.incDates = parsedInfo.incDates || [];
+      personAccount.expDates = parsedInfo.expDates || [];
       personAccount.firstName = parsedInfo.firstName;
       personAccount.lastName = parsedInfo.lastName;
       personAccount.incomes = parsedInfo.incomes || [];
