@@ -62,7 +62,7 @@ function addIncome() {
     inputIncome.value = "";
     let date = new Date();
     let day = date.getDate();
-    let month = date.getMonth();
+    let month = date.getMonth() + 1;
     let formatMonth = month.toString().padStart(2, "0");
     let year = date.getFullYear();
     let hour = date.getHours();
@@ -96,7 +96,7 @@ function addExpense() {
     inputExpense.value = "";
     let date = new Date();
     let day = date.getDate();
-    let month = date.getMonth();
+    let month = date.getMonth() + 1;
     let formatMonth = month.toString().padStart(2, "0");
     let year = date.getFullYear();
     let hour = date.getHours();
@@ -191,7 +191,7 @@ function verifIds() {
 
 function clearAll() {
   let warning = confirm(
-    "Are you sure you want to clear all the data ? You will lose all your data."
+    "Are you sure you want to clear all the data ? You will lose all of it."
   );
   if (warning) {
     localStorage.clear();
